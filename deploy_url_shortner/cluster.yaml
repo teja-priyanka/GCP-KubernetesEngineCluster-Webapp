@@ -1,0 +1,25 @@
+
+imports:
+- path: templates/cluster.jinja        
+  name: cluster.jinja
+
+- path: templates/url-shortner-app.jinja
+  name: url-shortner-app.jinja
+
+resources:                             
+- name: url-shortner-cluster
+  type: cluster.jinja        
+  properties:
+    description: "URL Shortner Cluster"
+    zones:
+    - us-central1-f
+    - us-central1-c
+    - us-central1-a
+    initialNodeCount: 1
+
+- name: url-shortner-app
+  type: url-shortner-app.jinja        
+  properties:
+    cluster-type:                    $(ref.url-shortner-cluster.clusterType)
+    cluster-type-apps:               $(ref.url-shortner-cluster.clusterType-apps)
+    cluster-type-v1beta1-extensions: $(ref.url-shortner-cluster.clusterType-v1beta1-extensions)

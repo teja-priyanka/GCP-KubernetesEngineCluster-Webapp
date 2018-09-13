@@ -1,0 +1,17 @@
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get -y install curl && \
+    apt-get -y install vim && \
+    apt-get -y install gnupg
+
+RUN mkdir /usr/deploy_url_shortner
+
+WORKDIR /usr/deploy_url_shortner
+
+COPY deploy_url_shortner .
+
+RUN chmod 755 deploy_app.sh deploymentmanager.properties
+
+CMD ./deploy_app.sh deploy
+

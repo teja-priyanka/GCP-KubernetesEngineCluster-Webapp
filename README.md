@@ -9,10 +9,10 @@ A GCP service account keyfile should be copied to deploy_url_shortner/keyfiles d
 Assuming working directory is GCP-KubernetesEngineCluster-Webapp
 
 build the docker image to create the cluster in Kubernetes Engine and deploy the web app
-	docker build -t ubuntu-googlecloudsdk .
+docker build -t ubuntu-googlecloudsdk .
 
 build the docker image to delete the cluster in Kubernetes Engine
-	docker build -t ubuntu-googlecloudsdk -f Dockerfile_delete .
+docker build -t ubuntu-googlecloudsdk -f Dockerfile_delete .
 
 run the image to create container
-	docker run -ti --rm ubuntu-googlecloudsdk:latest		
+docker run -ti --rm ubuntu-googlecloudsdk:latest		
